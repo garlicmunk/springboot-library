@@ -3,8 +3,10 @@ package com.example.demo.book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -44,5 +46,24 @@ public class BookService {
         }
         bookRepository.deleteById(id);
 
+    }
+
+
+    @Transactional
+    public void issueBook(String bookName) {
+        //find if the book exists in library by name, if it doesnt, let the user know the same
+        Book book = bookRepository.findBookBybookName(bookName)
+                .orElseThrow(() -> new IllegalStateException(
+                "book with name "+bookName+" does not exist in the library... :/"
+        ));
+        //check if the name supplied by the user is valid.
+        if(bookName != null && bookName.length() > 0 && Objects.equals(book.getBookName(), bookName)){
+            Integer oldBookQuant = book.getBookQuantity();
+            Integer newBookQuant = oldBookQuant - 1;
+
+            book.setBookName(bookName);
+            book.setBookQuantity(newBookQuant);
+            book.setBookStatus("issued");
+        }
     }
 }

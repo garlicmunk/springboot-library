@@ -13,4 +13,5 @@ public interface BookRepository
 
         @Query("SELECT s FROM Book s WHERE s.bookName = ?1")
         Optional<Book> findBookBybookName(String bookName);
+
 }

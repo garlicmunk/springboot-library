@@ -30,4 +30,9 @@ public class BookController {
     public void deleteBook(@PathVariable("id") Long id){
         bookService.deleteBook(id);
     }
+
+    @PutMapping(path = "{bookName}")
+    public void issueBook(@PathVariable("bookName") String bookName){
+        bookService.issueBook(bookName);
+    }
 }
