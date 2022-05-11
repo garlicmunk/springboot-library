@@ -24,21 +24,25 @@ public class Book {
 //    private static List<String> bookStatus = Arrays.asList("issued", "in-stock", "out-of-stock");
     private String bookStatus;
 
+    private Integer bookIssuedCount;
+
 
     public Book(){
 
     }
-    public Book(Long id, String bookName, Integer bookQuantity, String bookStatus){
+    public Book(Long id, String bookName, Integer bookQuantity, String bookStatus, Integer bookIssuedCount){
         this.id = id;
         this.bookName = bookName;
         this.bookQuantity = bookQuantity;
         this.bookStatus = bookStatus;
+        this.bookIssuedCount = bookIssuedCount;
 
     }
-    public Book(String bookName, Integer bookQuantity, String bookStatus){
+    public Book(String bookName, Integer bookQuantity, String bookStatus, Integer bookIssuedCount){
         this.bookName = bookName;
         this.bookQuantity = bookQuantity;
         this.bookStatus = bookStatus;
+        this.bookIssuedCount = bookIssuedCount;
     }
 
     // getters and setters
@@ -74,6 +78,12 @@ public class Book {
         this.bookStatus = bookStatus;
     }
 
+    public Integer getBookIssuedCount(){
+        return this.bookIssuedCount = bookIssuedCount;
+    }
+    public void setBookIssuedCount(Integer bookIssuedCount){
+        this.bookIssuedCount = bookIssuedCount;
+    }
     @Override
     public String toString() {
         return "Book{" +
@@ -81,6 +91,7 @@ public class Book {
                 ", bookName='" + bookName + '\'' +
                 ", bookQuantity=" + bookQuantity +
                 ", bookStatus=" + bookStatus +
+                ", bookIssuedCount=" + bookIssuedCount +
                 '}';
     }
 }

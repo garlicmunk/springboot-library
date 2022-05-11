@@ -15,19 +15,22 @@ public class BookConfig {
             Book mockingbird = new Book(
                     "mockingbird",
                     1,
-                    "in-stock"
+                    "in-stock",
+                    0
                     );
 
             Book artOfDeception = new Book(
                     "art-of-deception",
                     1,
-                    "in-stock"
+                    "in-stock",
+                    0
             );
 
             Book blackHatPython= new Book(
                     "black-hat-python",
                     2,
-                    "in-stock"
+                    "in-stock",
+                    0
             );
 
             repository.saveAll(

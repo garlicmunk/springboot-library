@@ -14,4 +14,10 @@ public interface BookRepository
         @Query("SELECT s FROM Book s WHERE s.bookName = ?1")
         Optional<Book> findBookBybookName(String bookName);
 
+        @Query("SELECT s FROM Book s WHERE s.id = ?1")
+        Optional<Book> findBookById(Long Id);
+
+        @Query("SELECT s.bookQuantity FROM Book s WHERE s.id = ?1")
+        Integer getQuantityById(Long id);
+
 }
